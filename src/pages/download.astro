@@ -1,0 +1,75 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import { site, companyInfo, miniProgramName, serviceSteps, faqs } from '../data/siteConfig.js';
+---
+<MainLayout title={`星火AI自习空间在线预约 - ${miniProgramName}小程序`} description={`通过微信小程序「${miniProgramName}」在线预约星火AI自习空间座位，支持考勤打卡、学习时长统计和到店签到。`}>
+  <Header />
+  <PageHero title="在线预约" subtitle={`微信小程序「${miniProgramName}」`} image="/static/banner1.jpg" />
+  <main class="container pages">
+    <div class="text-left position mb-3 d-none d-md-block">当前位置：<a href="/">首页</a> &gt; <a href="/download.html">在线预约</a></div>
+    <div class="download-panel p-4 p-md-5 text-center mb-5">
+      <img src="/static/gh_1b89df639bf6_430.jpg" class="img-fluid mb-3" style="max-width: 200px; border-radius: 50%;" alt="星火AI自习空间小程序码" />
+      <h1 class="h3 font-weight-bold">微信小程序「{miniProgramName}」</h1>
+      <p class="text-secondary">在线选座、考勤打卡、学习时长随时查看。</p>
+      <p class="text-secondary mb-3">打开微信扫一扫上方小程序码，或搜索「{miniProgramName}」进入小程序开始预约。</p>
+      <a class="btn btn-danger btn-lg" href={`tel:${companyInfo.phone}`}>电话咨询预约</a>
+    </div>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">WHY MINI PROGRAM</div>
+        <h2 class="section-title">为什么建议使用小程序</h2>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4 mb-4"><div class="feature-card h-100"><h3 class="h5 font-weight-bold text-info">预约更快</h3><p class="text-secondary mb-0">座位状态实时可见，常用时段可复用，减少每次现场找座的重复步骤。</p></div></div>
+        <div class="col-12 col-md-4 mb-4"><div class="feature-card h-100"><h3 class="h5 font-weight-bold text-info">信息更清晰</h3><p class="text-secondary mb-0">座位、时段和价格集中展示，降低预约冲突和错约的概率。</p></div></div>
+        <div class="col-12 col-md-4 mb-4"><div class="feature-card h-100"><h3 class="h5 font-weight-bold text-info">时长可查看</h3><p class="text-secondary mb-0">考勤打卡在线记录，学习时长一目了然，努力看得见。</p></div></div>
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">STEPS</div>
+        <h2 class="section-title">预约流程</h2>
+      </div>
+      <div class="row">
+        {serviceSteps.map((step, index) => (
+          <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="feature-card h-100">
+              <div class="h2 font-weight-bold text-info">0{index + 1}</div>
+              <h3 class="h5 font-weight-bold">{step.title}</h3>
+              <p class="text-secondary mb-0">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">FAQ</div>
+        <h2 class="section-title">预约与使用问题</h2>
+      </div>
+      <div class="row">
+        {faqs.map((faq) => (
+          <div class="col-12 mb-3">
+            <div class="faq-card">
+              <div class="faq-q">
+                <span class="faq-badge q">问</span>
+                <h3>{faq.question}</h3>
+              </div>
+              <div class="faq-a">
+                <span class="faq-badge a">答</span>
+                <p>{faq.answer}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</MainLayout>

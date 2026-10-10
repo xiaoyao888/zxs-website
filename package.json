@@ -1,0 +1,39 @@
+{
+    "name": "zxs-website",
+    "type": "module",
+    "version": "1.0.0",
+    "description": "星火AI自习室官网 - 智能座位预约自习空间静态网站",
+    "keywords": [
+        "星火AI自习室",
+        "自习室",
+        "座位预约",
+        "考研自习室",
+        "考公自习室",
+        "AI自习室",
+        "朔州自习室",
+        "学习空间",
+        "Astro"
+    ],
+    "license": "MIT",
+    "scripts": {
+        "astro": "astro",
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "sync": "astro sync",
+        "deploy": "bash deploy.sh",
+        "deploy:sh": "bash deploy.sh",
+        "deploy:ps": "powershell -ExecutionPolicy Bypass -File scripts/publish.ps1"
+    },
+    "dependencies": {
+        "@astrojs/sitemap": "^3.4.1",
+        "astro": "^6.4.4",
+        "astro-seo": "^1.1.0"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.21",
+        "postcss": "^8.5.3",
+        "tailwindcss": "^3.4.17",
+        "terser": "^5.39.2"
+    }
+}

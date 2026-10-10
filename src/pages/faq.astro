@@ -1,0 +1,71 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import { site, companyInfo, faqs } from '../data/siteConfig.js';
+
+const solutionFaqs = [
+  { question: '整套系统包含哪些内容？', answer: '包含用户端微信小程序、后台管理系统和后端接口服务，支持源码交付，开箱即用。' },
+  { question: '可以定制开发吗？', answer: '支持二次开发与功能定制，可根据实际经营需求调整功能模块与界面。' },
+  { question: '系统如何部署上线？', answer: '提供部署上线支持，也可根据你现有的服务器环境协助部署。' },
+  { question: '是否有售后保障？', answer: '提供售后服务保障，使用过程中遇到问题可随时联系技术支持。' },
+];
+---
+<MainLayout title={`常见问题 - ${site.title}`} description="星火AI自习空间常见问题：自习室座位预约、小程序使用、系统购买、部署与定制开发等问题的解答。">
+  <Header />
+  <PageHero title="常见问题" subtitle="关于自习室服务与系统的常见解答" />
+  <main class="container pages">
+    <div class="text-left position mb-3 d-none d-md-block">当前位置：<a href="/">首页</a> &gt; <a href="/faq.html">常见问题</a></div>
+    <section class="py-4">
+      <div class="mb-3">
+        <div class="section-kicker">SERVICE</div>
+        <h2 class="section-title">自习室服务</h2>
+      </div>
+      {faqs.map((faq) => (
+        <div class="faq-card mb-3">
+          <div class="faq-q">
+            <span class="faq-badge q">问</span>
+            <h3>{faq.question}</h3>
+          </div>
+          <div class="faq-a">
+            <span class="faq-badge a">答</span>
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <section class="py-4">
+      <div class="mb-3">
+        <div class="section-kicker">SOLUTION</div>
+        <h2 class="section-title">系统购买与部署</h2>
+      </div>
+      {solutionFaqs.map((faq) => (
+        <div class="faq-card mb-3">
+          <div class="faq-q">
+            <span class="faq-badge q">问</span>
+            <h3>{faq.question}</h3>
+          </div>
+          <div class="faq-a">
+            <span class="faq-badge a">答</span>
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <section class="download-panel p-4 p-md-5 my-4">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-8">
+          <h3 class="h4 font-weight-bold">没有找到答案？</h3>
+          <p class="text-secondary mb-md-0">欢迎电话或邮箱联系我们，我们将尽快为您解答。</p>
+        </div>
+        <div class="col-12 col-md-4 text-md-right mt-3 mt-md-0">
+          <a class="btn btn-info btn-lg" href={`tel:${companyInfo.phone}`}>联系我们</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</MainLayout>

@@ -1,0 +1,184 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import { site, companyInfo, miniProgramName } from '../data/siteConfig.js';
+
+const systemModules = [
+  {
+    title: '用户端微信小程序',
+    description: '座位预约、考勤打卡、预约记录、个人中心，微信一键登录与在线支付，用户开箱即用。',
+  },
+  {
+    title: '后台管理系统',
+    description: '座位管理、用户管理、预约管理、数据统计、系统设置，可视化运营自习室。',
+  },
+  {
+    title: '后端接口服务',
+    description: '统一 RESTful API、MySQL 数据持久化、微信登录与支付对接，稳定支撑整套系统。',
+  },
+];
+
+const miniappFeatures = [
+  { title: '可视化座位预约', description: '座位布局实时展示，状态一目了然，预约冲突自动检测。' },
+  { title: '预约记录管理', description: '历史预约随时查看，支持取消预约与状态跟踪。' },
+  { title: '考勤打卡', description: '到店签到、离店签退，考勤记录自动沉淀，学习时长清晰可查。' },
+  { title: '个人中心', description: '资料修改、登录退出、偏好设置，用户体验完整顺畅。' },
+  { title: '微信一键登录', description: '免注册快速进入，降低用户使用门槛。' },
+  { title: '在线支付', description: '微信支付对接，预约下单、结算流程一体化。' },
+];
+
+const adminFeatures = [
+  { title: '座位管理', description: '座位增删改查、状态监控、批量操作，布局灵活配置。' },
+  { title: '用户管理', description: '用户查看、搜索筛选、权限管理，会员信息集中维护。' },
+  { title: '预约管理', description: '全局预约查看、异常处理，订单状态一目了然。' },
+  { title: '数据统计', description: 'ECharts 多维度图表，使用率、预约趋势可视化分析。' },
+  { title: '系统设置', description: '时间段配置、系统参数调整，运营规则灵活可控。' },
+  { title: '权限体系', description: '学生端 / 管理员端角色分离，安全可靠。' },
+];
+
+const advantages = [
+  { title: '前后端分离', description: '小程序端、后台管理端、后端接口三个项目独立部署，职责清晰、易于维护。' },
+  { title: '技术成熟稳定', description: 'Spring Boot 3 + Vue 3 + uni-app，一套小程序代码多端适配。' },
+  { title: '数据可视化', description: 'ECharts 多维度统计，座位使用率与经营数据心中有数。' },
+  { title: '可定制开发', description: '提供源码，支持二次开发与功能定制，贴合实际经营需求。' },
+];
+
+const audiences = [
+  { title: '自习室经营者', description: '希望用一套系统管理座位、预约和用户，减少人工登记与现场沟通的自习室。' },
+  { title: '连锁自习室 / 共享空间', description: '多门店、多座位统一管理，预约与经营数据集中沉淀。' },
+  { title: '传统自习室转型', description: '从线下占座转向线上预约，提升运营效率与用户体验。' },
+];
+
+const deliveryItems = ['整套系统源码', '部署上线支持', '功能定制开发', '售后服务保障'];
+---
+<MainLayout title={`自习室系统解决方案 - 小程序 + 后台管理系统 - ${site.title}`} description="星火AI自习空间提供整套自习室数字化系统：用户端微信小程序（座位预约、考勤打卡）+ 后台管理系统（座位/用户/预约/统计），支持源码交付与定制开发。">
+  <Header />
+  <PageHero title="解决方案" subtitle="售卖整套小程序系统及后台管理系统" image="/static/banner3.png" />
+  <main class="container pages">
+    <div class="text-left position mb-3 d-none d-md-block">当前位置：<a href="/">首页</a> &gt; <a href="/solution.html">解决方案</a></div>
+    <h2 class="text-center my-4 fs-sm-28 fs-24">自习室数字化系统</h2>
+
+    <section class="download-panel p-4 p-md-5 mb-5">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-8">
+          <h3 class="h4 font-weight-bold">整套交付 · 开箱即用</h3>
+          <p class="text-secondary mb-md-0">包含用户端微信小程序、后台管理系统与后端接口服务，助你快速搭建自习室数字化运营平台。</p>
+        </div>
+        <div class="col-12 col-md-4 text-md-right mt-3 mt-md-0">
+          <a class="btn btn-info btn-lg" href={`tel:${companyInfo.phone}`}>电话咨询</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">MODULES</div>
+        <h2 class="section-title">系统构成</h2>
+      </div>
+      <div class="row">
+        {systemModules.map((item) => (
+          <div class="col-12 col-md-4 mb-4">
+            <div class="feature-card h-100 text-center">
+              <h3 class="h5 font-weight-bold">{item.title}</h3>
+              <p class="text-secondary mb-0">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">MINI PROGRAM</div>
+        <h2 class="section-title">用户端小程序功能</h2>
+      </div>
+      <div class="row">
+        {miniappFeatures.map((item) => (
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="feature-card h-100">
+              <h3 class="h5 font-weight-bold text-info">{item.title}</h3>
+              <p class="text-secondary mb-0">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">ADMIN</div>
+        <h2 class="section-title">后台管理系统功能</h2>
+      </div>
+      <div class="row">
+        {adminFeatures.map((item) => (
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="feature-card h-100">
+              <h3 class="h5 font-weight-bold text-info">{item.title}</h3>
+              <p class="text-secondary mb-0">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">ADVANTAGES</div>
+        <h2 class="section-title">核心优势</h2>
+      </div>
+      <div class="row">
+        {advantages.map((item) => (
+          <div class="col-12 col-md-6 col-lg-3 mb-4">
+            <div class="feature-card h-100">
+              <h3 class="h5 font-weight-bold text-info">{item.title}</h3>
+              <p class="text-secondary mb-0">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">AUDIENCE</div>
+        <h2 class="section-title">适用对象</h2>
+      </div>
+      <div class="row">
+        {audiences.map((item) => (
+          <div class="col-12 col-lg-4 mb-4">
+            <div class="feature-card h-100">
+              <h3 class="h5 font-weight-bold text-info">{item.title}</h3>
+              <p class="text-secondary mb-0">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">DELIVERY</div>
+        <h2 class="section-title">交付与服务</h2>
+        <p class="text-secondary">源码交付，支持部署、定制与售后，让系统真正用起来。</p>
+      </div>
+      <div class="d-flex flex-wrap justify-content-center">
+        {deliveryItems.map((item) => <span class="badge badge-pill badge-info p-3 m-2">{item}</span>)}
+      </div>
+    </section>
+
+    <section class="download-panel p-4 p-md-5 my-4">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-8">
+          <h3 class="h4 font-weight-bold">咨询购买</h3>
+          <p class="text-secondary mb-md-0">如需了解系统详情、功能演示或定制需求，欢迎电话或邮箱联系我们。</p>
+        </div>
+        <div class="col-12 col-md-4 text-md-right mt-3 mt-md-0">
+          <a class="btn btn-info btn-lg" href={`tel:${companyInfo.phone}`}>立即咨询</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</MainLayout>

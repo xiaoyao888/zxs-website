@@ -1,0 +1,159 @@
+---
+import '../styles/global.css';
+import { SEO } from 'astro-seo';
+import { site, companyInfo, localSeo, faqs, highlights } from '../data/siteConfig.js';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonicalURL?: string;
+  pageType?: string;
+}
+
+const { title = site.title, description = site.description, canonicalURL: pageCanonicalURL, pageType = 'website' } = Astro.props;
+const baseSiteURL = Astro.site?.toString().replace(/\/$/, '') || site.url;
+const canonicalURL = pageCanonicalURL || new URL(Astro.url.pathname, baseSiteURL).href;
+const logoURL = new URL('/static/zxs-logo.png', baseSiteURL).href;
+const pagePath = Astro.url.pathname;
+const jsonLd = JSON.stringify([
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${baseSiteURL}/#organization`,
+    name: companyInfo.name,
+    legalName: companyInfo.fullName,
+    url: site.url,
+    logo: logoURL,
+    email: companyInfo.email,
+    telephone: companyInfo.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: companyInfo.address,
+      addressLocality: localSeo.locality,
+      addressRegion: localSeo.province,
+      addressCountry: 'CN',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${baseSiteURL}/#local-business`,
+    name: companyInfo.name,
+    legalName: companyInfo.fullName,
+    image: logoURL,
+    url: site.url,
+    telephone: companyInfo.phone,
+    email: companyInfo.email,
+    priceRange: '$$',
+    description: site.description,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: companyInfo.address,
+      addressLocality: localSeo.locality,
+      addressRegion: localSeo.province,
+      addressCountry: 'CN',
+    },
+    areaServed: localSeo.areaServed.map((name) => ({ '@type': 'Place', name })),
+    makesOffer: localSeo.serviceType.map((name) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${baseSiteURL}/#website`,
+    name: site.name,
+    url: site.url,
+    inLanguage: 'zh-CN',
+    description: site.description,
+    publisher: { '@id': `${baseSiteURL}/#organization` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${baseSiteURL}/#study-room-service`,
+    name: '智能自习室座位预约服务',
+    serviceType: localSeo.serviceType.join('、'),
+    provider: { '@id': `${baseSiteURL}/#local-business` },
+    areaServed: localSeo.areaServed.map((name) => ({ '@type': 'Place', name })),
+    description: '面向考研、考公、学习和办公人群提供座位在线预约、考勤打卡、学习时长统计和安静舒适的自习空间。',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: '星火AI自习空间服务能力',
+      itemListElement: highlights.map((item) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: item.title, description: item.description },
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${baseSiteURL}/#faq`,
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '首页', item: `${baseSiteURL}/` },
+      ...(pagePath === '/' ? [] : [{ '@type': 'ListItem', position: 2, name: title.replace(` - ${site.title}`, ''), item: canonicalURL }]),
+    ],
+  },
+]).replace(/</g, '\\u003c');
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no" />
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonicalURL}
+      openGraph={{ basic: { title, type: pageType, image: logoURL, url: canonicalURL } }}
+      twitter={{ card: 'summary', title, description, image: logoURL }}
+      extend={{
+        meta: [
+          { name: 'keywords', content: site.keywords },
+          { name: 'robots', content: 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1' },
+          { name: 'author', content: companyInfo.fullName },
+          { name: 'application-name', content: site.name },
+          { name: 'theme-color', content: '#2563eb' },
+          { name: 'geo.region', content: localSeo.region },
+          { name: 'geo.placename', content: `${localSeo.province}${localSeo.locality}${localSeo.district}` },
+          { name: 'business:contact_data:locality', content: localSeo.locality },
+          { name: 'business:contact_data:region', content: localSeo.province },
+          { name: 'business:contact_data:country_name', content: localSeo.country },
+          { name: 'business:contact_data:phone_number', content: companyInfo.phone },
+        ],
+        link: [
+          { rel: 'alternate', hreflang: 'zh-CN', href: canonicalURL },
+          { rel: 'alternate', hreflang: 'x-default', href: canonicalURL },
+        ],
+      }}
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <script type="application/ld+json" set:html={jsonLd} />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/font-awesome.min.css" />
+    <link rel="stylesheet" href="/static/aoyun.css" />
+    <link rel="stylesheet" href="/static/swiper.min.css" />
+    <link rel="stylesheet" href="/static/animate.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="/static/jquery-1.12.4.min.js" defer></script>
+    <script src="/static/popper.min.js" defer></script>
+    <script src="/static/bootstrap.min.js" defer></script>
+    <script src="/static/swiper.min.js" defer></script>
+    <script src="/static/wow.min.js" defer></script>
+  </body>
+</html>

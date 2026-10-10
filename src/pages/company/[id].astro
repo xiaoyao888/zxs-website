@@ -1,0 +1,28 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PageHero from '../../components/PageHero.astro';
+import { site, articles } from '../../data/siteConfig.js';
+
+export function getStaticPaths() {
+  return articles
+    .filter((item) => item.section === 'company')
+    .map((article) => ({ params: { id: article.id }, props: { article } }));
+}
+
+const { article } = Astro.props;
+---
+<MainLayout title={`${article.title} - ${site.title}`} description={article.summary}>
+  <Header />
+  <PageHero title="公司动态" subtitle="了解最新公司动态及行业资讯" />
+  <main class="container pages">
+    <div class="text-left position mb-3 d-none d-md-block">当前位置：<a href="/">首页</a> &gt; <a href="/article.html">新闻中心</a> &gt; {article.title}</div>
+    <article class="content">
+      <h1 class="text-center my-4 fs-sm-28 fs-24">{article.title}</h1>
+      <div class="text-center text-muted mb-4">{article.category} · {article.date}</div>
+      {article.content.map((paragraph) => <p style="text-indent: 2em;">{paragraph}</p>)}
+    </article>
+  </main>
+  <Footer />
+</MainLayout>

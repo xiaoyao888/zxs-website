@@ -1,0 +1,36 @@
+---
+import { companyInfo } from '../data/siteConfig.js';
+---
+<footer class="footer mt-3 pt-5 border-top">
+  <div class="container">
+    <div class="row pb-5">
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white font-weight-bold">{companyInfo.shortName}</h5>
+        <p class="text-white-50 mb-1">{companyInfo.footerSubtitle}</p>
+        <p class="text-white-50 mb-0">{companyInfo.footerDescription}</p>
+      </div>
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5>联系我们</h5>
+        <ul class="lh-2 pl-3">
+          <li>电话：<a href={`tel:${companyInfo.phone}`}>{companyInfo.phone}</a></li>
+          <li>邮箱：<a href={`mailto:${companyInfo.email}`}>{companyInfo.email}</a></li>
+          <li>地址：{companyInfo.address}</li>
+        </ul>
+      </div>
+      <div class="col-12 col-md-4">
+        <h5>资质信息</h5>
+        <ul class="lh-2 pl-3">
+          <li>公司全称：{companyInfo.fullName}</li>
+          <li>统一社会信用代码：{companyInfo.license}</li>
+          <li>备案号码：<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">{companyInfo.icp}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-top pt-3 text-center">
+      <p class="mb-0">{companyInfo.footerNote}</p>
+    </div>
+  </div>
+  <div class="copyright lh-3 text-center">
+    {companyInfo.copyright}
+  </div>
+</footer>

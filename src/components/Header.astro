@@ -1,0 +1,30 @@
+---
+import { navLinks, site } from '../data/siteConfig.js';
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+function isActive(href) {
+  const normalizedHref = href.replace(/\/$/, '') || '/';
+  if (normalizedHref === '/') return currentPath === '/';
+  return currentPath === normalizedHref || currentPath.startsWith(`${normalizedHref}/`);
+}
+---
+<nav class="navbar navbar-light bg-light fixed-top navbar-expand-lg shadow-sm">
+  <div class="container">
+    <a class="navbar-brand my-1 d-flex align-items-center" href="/">
+      <img src="/static/logo.jpeg" class="logo-sm-height mr-2" height="44" style="border-radius: 10px;" alt="星火AI自习空间" />
+      <span class="brand-name">{site.name}</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        {navLinks.map((link) => (
+          <li class:list={["nav-item", { active: isActive(link.href) }]}>
+            <a class:list={["nav-link", { active: isActive(link.href) }]} href={link.href}>{link.name}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="head-sm-height"></div>

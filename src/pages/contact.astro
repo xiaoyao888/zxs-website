@@ -1,0 +1,52 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import { site, companyInfo } from '../data/siteConfig.js';
+---
+<MainLayout title={`星火AI自习空间联系方式 - ${site.title}`} description="联系星火AI自习空间，咨询朔州朔城区自习室座位预约、开放时间、学习卡和安静自习空间服务。">
+  <Header />
+  <PageHero title="联系我们" subtitle="能为您服务是我们的荣幸" image="/static/banner3.png" />
+  <main class="container pages">
+    <div class="text-left position mb-3 d-none d-md-block">当前位置：<a href="/">首页</a> &gt; <a href="/contact.html">联系我们</a></div>
+    <section class="row align-items-stretch mb-5">
+      <div class="col-12 col-lg-7 mb-4 mb-lg-0">
+        <div class="feature-card h-100">
+          <h3 class="h4 font-weight-bold text-info">{companyInfo.fullName}</h3>
+          <div class="content mt-3">
+            <p>官方网站：<a href="/">{companyInfo.website}</a></p>
+            <p>联系人：张经理</p>
+            <p>电话：<a href={`tel:${companyInfo.phone}`}>{companyInfo.phone}</a></p>
+            <p>邮箱：<a href={`mailto:${companyInfo.email}`}>{companyInfo.email}</a></p>
+            <p>地址：{companyInfo.address}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-5">
+        <div class="download-panel p-4 h-100">
+          <h3 class="h4 font-weight-bold">咨询前可准备的信息</h3>
+          <ul class="text-secondary lh-2 mb-0 pl-3">
+            <li>所在城市、区县和具体位置</li>
+            <li>需要的自习时间段与使用频次</li>
+            <li>考研、考公、学习或办公等使用场景</li>
+            <li>是否需要长期固定座位或学习卡</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">SERVICE</div>
+        <h2 class="section-title">可咨询事项</h2>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-4 mb-4"><div class="feature-card h-100"><h3 class="h5 font-weight-bold text-info">座位预约</h3><p class="text-secondary mb-0">确认当前是否有空位，以及座位与时间段的预约方式。</p></div></div>
+        <div class="col-12 col-md-4 mb-4"><div class="feature-card h-100"><h3 class="h5 font-weight-bold text-info">开放时间</h3><p class="text-secondary mb-0">咨询自习室开放时间、时段安排和学习卡价格情况。</p></div></div>
+        <div class="col-12 col-md-4 mb-4"><div class="feature-card h-100"><h3 class="h5 font-weight-bold text-info">合作服务</h3><p class="text-secondary mb-0">长期固定座位、团队学习、办公自习等需求可沟通合作方式。</p></div></div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</MainLayout>

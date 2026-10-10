@@ -1,0 +1,109 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
+import { site, companyInfo, highlights, scenarios, serviceSteps } from '../data/siteConfig.js';
+---
+<MainLayout title={`星火AI自习空间服务介绍 - ${site.title}`} description="了解星火AI自习空间：面向考研、考公、学习和办公人群提供座位在线预约、考勤打卡和学习时长统计服务。">
+  <Header />
+  <PageHero title="公司简介" subtitle="专注智能座位预约自习空间" />
+  <main class="container pages">
+    <div class="text-left position mb-3 d-none d-md-block">当前位置：<a href="/">首页</a> &gt; <a href="/aboutus.html">公司简介</a></div>
+    <h2 class="text-center my-4 fs-sm-28 fs-24">公司简介</h2>
+    <div class="content">
+      <p style="text-indent: 2em;">星火AI自习空间是一款专注智能自习空间预约的服务，旨在为考研、考公、学习和办公人群提供安静舒适、便捷高效的学习环境。用户只需通过微信小程序，即可完成座位预约、考勤打卡和学习时长查询。</p>
+      <p style="text-indent: 2em;">服务支持按时间段预约座位，用户可以根据自己的学习计划挑选合适的座位与时段。同时，星火AI自习空间配备智能考勤打卡与学习时长统计能力，让每一次自习的努力都有迹可循。</p>
+      <p style="text-indent: 2em;">我们关注的不只是“能约座”，而是把找座、预约、打卡等重复流程变得更稳定：座位状态实时可见、预约记录可查、学习时长自动沉淀、后续预约更方便。</p>
+      <p style="text-indent: 2em;">星火AI自习空间不仅关注环境品质，也注重用户体验。未来平台将继续优化预约流程，增加更多便民功能，致力于为每一位学习者提供安静、专注、可靠的自习空间。</p>
+    </div>
+
+    <section class="py-4">
+      <div class="row">
+        <div class="col-12 col-lg-4 mb-4">
+          <div class="feature-card h-100">
+            <h3 class="h5 font-weight-bold text-info">服务定位</h3>
+            <p class="text-secondary mb-0">以智能座位预约为核心，把线下自习空间和用户线上预约连接起来。</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 mb-4">
+          <div class="feature-card h-100">
+            <h3 class="h5 font-weight-bold text-info">用户价值</h3>
+            <p class="text-secondary mb-0">减少临时找座、现场沟通和考勤记录不清晰的问题，让自习更直接。</p>
+          </div>
+        </div>
+        <div class="col-12 col-lg-4 mb-4">
+          <div class="feature-card h-100">
+            <h3 class="h5 font-weight-bold text-info">服务目标</h3>
+            <p class="text-secondary mb-0">持续提升本地自习空间服务的效率、透明度和环境品质。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">CAPABILITIES</div>
+        <h2 class="section-title">平台能力</h2>
+      </div>
+      <div class="row">
+        {highlights.map((item) => (
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="feature-card h-100">
+              <h3 class="h5 font-weight-bold text-info">{item.title}</h3>
+              <p class="text-secondary mb-0">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">SERVICE</div>
+        <h2 class="section-title">服务流程</h2>
+      </div>
+      <div class="row">
+        {serviceSteps.map((step, index) => (
+          <div class="col-12 col-md-6 mb-4">
+            <div class="feature-card h-100">
+              <div class="h2 font-weight-bold text-info">0{index + 1}</div>
+              <h3 class="h5 font-weight-bold">{step.title}</h3>
+              <p class="text-secondary mb-0">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-4">
+      <div class="text-center mb-4">
+        <div class="section-kicker">SCENES</div>
+        <h2 class="section-title">服务场景</h2>
+      </div>
+      <div class="row">
+        {scenarios.map((item) => (
+          <div class="col-12 col-lg-4 mb-4">
+            <div class="feature-card h-100">
+              <h3 class="h5 font-weight-bold text-info">{item.title}</h3>
+              <p class="text-secondary mb-0">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="download-panel p-4 p-md-5 my-4">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-8">
+          <h2 class="h4 font-weight-bold">联系 {companyInfo.name}</h2>
+          <p class="text-secondary mb-md-0">如需确认座位、预约时段或合作事宜，可通过电话或邮箱联系。</p>
+        </div>
+        <div class="col-12 col-md-4 text-md-right">
+          <a class="btn btn-info btn-lg" href={`tel:${companyInfo.phone}`}>电话咨询</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</MainLayout>

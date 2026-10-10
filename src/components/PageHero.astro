@@ -1,0 +1,10 @@
+---
+export interface Props { title: string; subtitle?: string; image?: string; }
+const { title, subtitle = '智能座位预约自习空间', image = '/static/banner2.jpg' } = Astro.props;
+---
+<section class="page-hero mb-2" style={`--page-hero-image: url('${image}')`}>
+  <div class="container">
+    <h1 class="fs-18 fs-sm-26 wow fadeInDown">{title}</h1>
+    <p class="fs-14 fs-sm-18 wow fadeInDown">{subtitle}</p>
+  </div>
+</section>
