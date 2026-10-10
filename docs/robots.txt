@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.mpss.cn/sitemap-index.xml
+Sitemap: https://xh.mpss.cn/sitemap-index.xml

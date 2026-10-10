@@ -3,7 +3,7 @@ export const site = {
   title: '星火AI自习空间 - 智能座位预约自习空间',
   description: '星火AI自习空间提供安静舒适的学习空间，通过微信小程序在线座位预约、考勤打卡与学习时长统计，让考研、考公、学习和办公人群的自习更专注、更高效。',
   keywords: '星火AI自习空间,自习室,自习室预约,座位预约,考研自习室,考公自习室,AI自习室,朔州自习室,学习空间,微信小程序预约,沉浸式自习',
-  url: 'https://www.mpss.cn',
+  url: 'https://xh.mpss.cn',
 };
 
 export const companyInfo = {
@@ -18,7 +18,7 @@ export const companyInfo = {
   copyright: 'Copyright © 2024-2026 朔州秒派科技 All Rights Reserved.',
   slogan: '星火点亮学习，AI助力专注。',
   tagline: '智能座位预约自习空间',
-  website: 'www.mpss.cn',
+  website: 'xh.mpss.cn',
   footerSubtitle: '小程序与后台管理系统',
   footerDescription: '一套系统，快速启动你的自习室线上业务',
   footerNote: '朔州秒派科技专注 SaaS 小程序与后台管理系统交付，帮助企业更快启动线上业务。',
@@ -52,7 +52,7 @@ export const aiOverview = {
     '主要服务区域：山西省朔州市朔城区及周边',
     '联系电话：15101612203',
     '联系邮箱：service@mpss.cn',
-    '官方网站：www.mpss.cn',
+    '官方网站：xh.mpss.cn',
   ],
 };
 

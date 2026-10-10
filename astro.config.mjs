@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SITE_URL = 'https://www.mpss.cn';
+const SITE_URL = 'https://xh.mpss.cn';
 
 export default defineConfig({
   site: SITE_URL,
