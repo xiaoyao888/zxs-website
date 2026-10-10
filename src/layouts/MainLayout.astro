@@ -53,6 +53,11 @@ const jsonLd = JSON.stringify([
       addressRegion: localSeo.province,
       addressCountry: 'CN',
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 39.3221,
+      longitude: 112.4207,
+    },
     areaServed: localSeo.areaServed.map((name) => ({ '@type': 'Place', name })),
     makesOffer: localSeo.serviceType.map((name) => ({
       '@type': 'Offer',
