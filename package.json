@@ -20,10 +20,7 @@
         "dev": "astro dev",
         "build": "astro build",
         "preview": "astro preview",
-        "sync": "astro sync",
-        "deploy": "bash deploy.sh",
-        "deploy:sh": "bash deploy.sh",
-        "deploy:ps": "powershell -ExecutionPolicy Bypass -File scripts/publish.ps1"
+        "sync": "astro sync"
     },
     "dependencies": {
         "@astrojs/sitemap": "^3.4.1",
